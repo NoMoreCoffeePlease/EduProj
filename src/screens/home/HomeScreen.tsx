@@ -7,6 +7,7 @@ import { LightTheme } from '../../core/theme/lightTheme';
 import { darkTheme } from '../../core/theme/darkTheme';
 
 
+
 const HomeScreen = (props) => {
     // const theme = useContext(ThemeContext); 
     
@@ -27,5 +28,8 @@ const HomeScreen = (props) => {
         </View>
     )
 }
+
+
+
 
 export default withTheme(styles,HomeScreen);
