@@ -1,7 +1,6 @@
 import {StyleSheet} from 'react-native';
-import {metrics} from '../../../core/themes/';
 // import { theme } from '../../../../App';
-import {BASE_DIMENSION, normalize} from '../../../core/themes/dimensions'
+import {BASE_DIMENSION} from '../../../core/themes/dimensions'
 
 export const styles = (backgroundProp) =>  StyleSheet.create({
   container: {
@@ -15,7 +14,7 @@ export const styles = (backgroundProp) =>  StyleSheet.create({
     width: 140,
   },
   marginTop: {
-    marginTop: 20,
+    marginTop: BASE_DIMENSION * 2 + 4,
   },
   activityIndicator: {
     height: 50,
