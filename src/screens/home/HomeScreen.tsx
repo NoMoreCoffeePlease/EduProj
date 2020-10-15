@@ -8,7 +8,6 @@ import { darkTheme } from '../../core/theme/darkTheme';
 
 
 const HomeScreen = (props) => {
-    console.log(props, 'props')
     // const theme = useContext(ThemeContext); 
     
     return ( 

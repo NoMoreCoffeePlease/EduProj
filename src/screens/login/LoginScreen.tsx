@@ -45,8 +45,7 @@ const LoginScreen = ({login, message, isFetchingToken}) => {
       ) : (
         <RoundedButton
           text={strings.LOGIN}
-          onPress={() => { 
-          }}
+          onPress={() => null}
         />
       )}
     </View>

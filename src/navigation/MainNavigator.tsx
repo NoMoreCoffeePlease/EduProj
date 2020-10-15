@@ -16,7 +16,7 @@ const MainStackNavigator = () => (
   <NavigationContainer>
     <Stack.Navigator
       screenOptions={defaultNavigationOptions}
-      initialRouteName={roots.homeScreen}>
+      initialRouteName={roots.loginScreen}>
       <Stack.Screen
         screenOptions={defaultNavigationOptions}
         name={roots.loginScreen}

@@ -4,19 +4,19 @@ import {metrics} from '../../../core/themes/';
 
 export const styles =  (theme) => StyleSheet.create({
   container: {
-    flex: metrics.size1,
+    flex: 1,
     backgroundColor: theme.colors.accent,
     justifyContent: 'center',
     alignItems: 'center',
   },
   logo: {
-    height: metrics.size100,
-    width: metrics.size140,
+    height: 100,
+    width: 140,
   },
   marginTop: {
-    marginTop: metrics.size20,
+    marginTop: 20,
   },
   activityIndicator: {
-    height: metrics.size50,
+    height: 50,
   },
 });
