@@ -9,7 +9,6 @@ import { darkTheme } from '../../core/theme/darkTheme';
 
 
 const HomeScreen = (props) => {
-    // const theme = useContext(ThemeContext); 
     
     return ( 
         <View style={props.styles.container}> 

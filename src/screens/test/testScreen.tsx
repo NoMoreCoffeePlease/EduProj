@@ -1,8 +1,7 @@
 import React from 'react';
 import {Text} from 'react-native';
 
-import I18n from 'react-native-i18n';
-// OR const I18n = require('react-native-i18n').default
+import I18n from '../../i18n/translations';
 
 export class testScreen extends React.Component {
   render() {
@@ -10,14 +9,3 @@ export class testScreen extends React.Component {
   }
 }
 
-// Enable fallbacks if you want `en-US` and `en-GB` to fallback to `en`
-I18n.fallbacks = true;
-
-I18n.translations = {
-  en: {
-    greeting: 'Hi!',
-  },
-  fr: {
-    greeting: 'Bonjour!',
-  },
-};
