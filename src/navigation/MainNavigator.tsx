@@ -1,12 +1,13 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import {roots} from '.';
 import {LoginScreen} from '../screens/login';
 import {HomeScreen} from '../screens/home';
-import {testScreen} from '../screens/test/testScreen'
 
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 const defaultNavigationOptions = () => ({
   gestureEnabled: false,
@@ -15,9 +16,13 @@ const defaultNavigationOptions = () => ({
 
 const MainStackNavigator = () => (
   <NavigationContainer>
-    <Stack.Navigator
+    <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="Login" component={LoginScreen} />
+      </Drawer.Navigator>
+    {/*<Stack.Navigator
       screenOptions={defaultNavigationOptions}
-      initialRouteName={roots.testScreen}>
+      initialRouteName={roots.homeScreen}>
       <Stack.Screen
         screenOptions={defaultNavigationOptions}
         name={roots.loginScreen}
@@ -28,12 +33,7 @@ const MainStackNavigator = () => (
         name={roots.homeScreen}
         component={()=><HomeScreen text={'text'}/>}
       />
-      <Stack.Screen
-      screenOptions={defaultNavigationOptions}
-      name={roots.testScreen}
-      component={testScreen} 
-      />
-    </Stack.Navigator>
+    </Stack.Navigator> */}
   </NavigationContainer>
 );
 
