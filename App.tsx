@@ -16,9 +16,6 @@ import { darkTheme } from './src/core/theme/darkTheme';
     }
   }
   return (
-    // <View>
-    //   <Text>dsadsa</Text>
-    // </View>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ThemeContext.Provider value={themeHandler}>

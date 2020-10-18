@@ -9,13 +9,13 @@ const metrics = {
   screenHeight: width < height ? height : width,
   navBarHeight: Platform.OS === IOS ? 64 : 54,
   size0: 0,
-  size1 : 1,
-  size14: 14,
-  size15: 15,
-  size20: 20,
-  size25: 25,
-  size40: 40,
-  size50: 50,
+  size2 : 2,
+  size4: 4,
+  size8: 8,
+  size16: 16,
+  size24: 24,
+  size32: 32,
+  size64: 64,
 
 };
 
