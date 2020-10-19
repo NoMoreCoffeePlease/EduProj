@@ -24,6 +24,7 @@ const HomeScreen = (props) => {
                }}>
                 <Text> Schimba</Text>
            </TouchableOpacity>
+           
         </View>
     )
 }
