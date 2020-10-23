@@ -1,89 +1,78 @@
-import React, {Component} from 'react';
-import {Text, View, FlatList, Modal, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import {
+  Text,
+  View,
+  FlatList,
+  Modal,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 
-import I18n from '../../i18n/translations';
+export default testScreen = () => {
+  const emojiData = require('../../../assets/data-by-group.json');
+  const [modalVisible, setModalVisible] = useState(false);
+  const [text, setText] = useState('');
+  const [emoji, setEmoji] = useState(emojiData[Object.keys(emojiData)[0]]);
 
-import EmojiSelector, {Categories} from 'react-native-emoji-selector';
-
-export class testScreen extends React.Component {
-  state = {
-    emojiList: [],
-    modalVisible: false,
-  };
-
-  onSelect = (emoji, emojiName, data) => {
-    const {emojiList} = this.state;
-    const newList = [...emojiList];
-    const objIndex = newList.findIndex((e) => e.name === emojiName);
-    if (objIndex === -1) {
-      newList.push({
-        emoji,
-        name: emojiName,
-        data,
-        index: 1,
-      });
-    } else {
-      newList[objIndex].index += 1;
-    }
-    this.setState({emojiList: newList});
-  };
-
-  modalOn = () => {
-    this.setState({modalVisible: true})
-  }
-
-  modalOff = () => {
-    this.setState({modalVisible: false})
-  }
-
-  updateList = (emoji, name) => {
-        const { emojiList } = this.state;
-        const newList = [...emojiList];
-        const objIndex = newList.findIndex(e => e.name === name);
-        newList[objIndex].index += 1;
-        this.setState({ emojiList: newList });
-      }
-
-  render() {
-    const {emojiList} = this.state;
+  const renderCategories = () => {
+    const category = Object.keys(emojiData);
     return (
-      <View style={{flex: 1, marginTop: 70, marginLeft: 70}}>
-        <Text>{I18n.t('greeting')}</Text>
-        <View style={{height: 20}}>
-          <FlatList
-            data={emojiList}
-            renderItem={({item}) => <Text>{item.emoji}</Text>}
-          />
-       
-        </View>
-          <Modal
-            animationType="slide"
-            transparent={true}
-            visible={this.state.modalVisible}
-            onRequestClose={() => {
-              Alert.alert('Modal has been closed.');
-            }}>
-            <View
-              style={{
-                height: 200,
-                width: 300,
-                marginTop: 200,
-                marginBottom: 70,
-              }}>
-              <EmojiSelector
-                category={Categories.symbols}
-                onEmojiSelected={this.onSelect}
-              />
-            </View>
-            <TouchableOpacity onPress={this.modalOff} style={{marginTop: 10}}>
-            <Text>Modal Off</Text>
-          </TouchableOpacity>
-          </Modal>
-          <TouchableOpacity onPress={this.modalOn} style={{marginTop: 30}}>
-            <Text>Modal On</Text>
-          </TouchableOpacity>
-         
-      </View>
+      <FlatList
+        data={category}
+        renderItem={renderItem}
+        keyExtractor={(item) => item}
+      />
     );
-  }
-}
+  };
+
+  const renderItem = ({item}) => {
+    return (
+      <TouchableOpacity onPress={() => setEmoji(emojiData[item])}>
+        <Text style={{fontSize: 15}}>{item}</Text>
+      </TouchableOpacity>
+    );
+  };
+
+  const renderEmoji = () => {
+    return (
+      <FlatList
+        numColumns={8}
+        data={emoji}
+        renderItem={renderEmojiItem}
+        keyExtractor={(item) => item}
+      />
+    );
+  };
+
+  const renderEmojiItem = ({item}) => {
+    return (
+      <TouchableOpacity onPress={() => setText(item.emoji)}>
+        <Text style={{fontSize: 25}}>{item.emoji}</Text>
+      </TouchableOpacity>
+    );
+  };
+
+  return (
+    <View styke={{flex: 1}}>
+      <Text>Text de apreciat</Text>
+      <TouchableOpacity onPress={() => setModalVisible(true)}>
+        <Text>Apasa</Text>
+      </TouchableOpacity>
+      <Text>{text}</Text>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          
+          onRequestClose={() => {
+            Alert.alert('Modal has been closed.');
+          }}>
+                  <View style={{ marginTop: 60, marginHorizontal: 10, flexDirection: 'row', backgroundColor: 'grey', height: 150, borderRadius: 5}}>
+
+          {renderCategories()}
+          {renderEmoji()}
+          </View>
+        </Modal>
+    </View>
+  );
+};
